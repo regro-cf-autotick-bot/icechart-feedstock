@@ -10,21 +10,23 @@ source:
   sha256: 41b2fb4af7a14b9a4663cfca4ac1345567ce57e909f16134766f23b0cf23a60f
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
   run:
     - folium
     - ipyleaflet
     - pyshp
-    - python >=3.6
+    - python >={{ python_min }}
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - icechart
 
